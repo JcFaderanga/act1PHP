@@ -1,0 +1,107 @@
+
+	:root{
+		--dark-violet:rgba(17,0,44);
+    --mid-violet:rgba(60,10,109);
+    --violet:rgba(157,78,221);
+    --light:rgba(224,170,254);
+	}
+	*{
+		padding:0;
+		margin:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+	}
+	body{
+	  background-image: url("https://www.pixelstalk.net/wp-content/uploads/images6/Aesthetic-Purple-Wallpaper-HD-City-Night.jpg");
+	  background-size: cover;
+	 }
+	 .container-fluid{
+    color:white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .-form{
+    max-height: 380px;
+    width: 100%;
+    max-width: 470px;
+    height: 100%;
+    border: 1px solid var(--light);
+    border-radius: 15px;
+    background: var(--dark-violet);
+    
+  }
+    .form-group{
+      margin: 20px auto;
+      width: 300px;
+    }
+    .form-group:last-child{
+      margin-top: 35px;
+      display: flex;
+      justify-content: space-between;
+    }
+  .form-control{
+    width: 300px;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+    background: var(--violet);
+    border-radius: 15px;
+    border: 1px solid var(--dark-violet);
+  }
+  .form-control::placeholder{
+    color: white;
+
+  }
+  .form-control:focus{
+    color: var(--dark-violet);
+    box-shadow: rgba(170,240,193, 0.12) 0px 2px 4px 0px, rgba(170,240,193, 0.32) 0px 2px 16px 0px;
+         border: 1px solid var(--dark-violet);
+  }
+  
+  .col{
+     display: flex;
+     justify-content: center;
+       align-items: center;
+       height: 120px;
+       color: var(--light);
+      
+  }
+  .col h2{
+     font-size: 55px;
+     font-weight: 400;
+     color: var(--green);
+  }
+  form{
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+
+  }
+  .btn{
+   background-color: var(--light);
+   color: var(--dark-violet);  
+   padding:10px 35px;
+   width: 100%;
+   border-radius: 20px ;
+   border:1px solid var(--dark-violet);
+   transition: .1s;
+  }
+  .btn:hover{
+     background-color: var(--dark-violet);
+    color:white;
+  }
+
+  .register{
+    display: flex;
+    font-size: 17px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register span{
+    color:var(--light);
+    cursor: pointer;
+  }
