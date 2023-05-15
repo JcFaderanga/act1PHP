@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--FOTNS-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300&display=swap" rel="stylesheet">
+  <!--ICONS-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!--BOOTSRAP-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<style type="text/css">
+	:root{
+		--fresh:#FF4B2B;
+		--violet:#FF4B2B;
+		--darker-violet:#FF4B2B;
+		--brown:#FF4B2B;
+		--blue:#FF4B2B;
+		--green:#FF4B2B;
+		--cursiv-font:'Dancing Script', cursive;
+		--lavender:#e1b0fe;
+	}
+	*{
+    padding: 0;
+    margin: 0;  
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+  }
+  *::before, *::after{
+    padding: 0;
+    margin: 0;  
+    box-sizing: border-box;
+  }
+  html{
+    scroll-behavior: smooth;
+  }
+  body{
+
+  }
+
+	.continer-fluid{
+		height: 100vh;
+		display: flex;
+
+	}
+	
+	.-inner-container{
+		width: 100%;
+		height: 100%;
+		
+	}
+	nav{
+		height: 60px;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+        
+	}
+	nav span{
+		font-size: 20px;
+	}
+	nav i{
+		font-size: 40px;
+		cursor: pointer;
+		margin: 0 20px;
+			}
+
+	.left-side{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.left-side i{
+		color: var(--brown);
+	}
+	.left-side span{
+		color: var(--brown);
+		
+	}
+	.right-side{
+        display: flex;
+        align-items: center;
+	}
+	.right-side li{
+		margin: 20px;
+		color: var(--brown);
+		cursor: pointer;
+	}
+    .sidebar{
+		width: 0;
+		height: 100%;
+        overflow:hidden;
+        transition: .6s;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+	}
+	.user-side{
+		width: 100%;
+		height: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;	
+		transition: 1s;
+	}
+	.user-side i{
+		font-size: 50px;
+	}
+	.user-side i:hover{
+		transform: scale(1.2);
+	}
+	.sidebar ul{
+    width: 100%; 
+}
+.sidebar ul a{
+	text-decoration: none;
+}
+.sidebar ul li{
+    width: 100%;
+    color: #1f1f1f;
+    padding-left: 13px;
+    display: flex;
+    align-items: center;
+    margin:5px 0;
+    transition: .2s;
+    cursor: pointer;
+}
+.sidebar ul li label{
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 0;
+
+}
+
+.sidebar ul li i{
+    font-size: 30px;
+    display: flex;
+    color: var(--brown);
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    height: 50px;
+
+}
+.sidebar ul li:hover{
+    transform: translateX(10px);
+}
+.-content{
+	width: 100%;
+	height: calc(100% - 60px);
+}
+.-content .search-cont{
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.search-bar{
+ max-width: 500px;
+ width: 100%;
+ height: 50px;
+ display: flex;
+ align-items: center;
+}
+.form-control{
+	border-radius: 25px;
+	height: 40px;
+	border: 1px solid var(--brown);
+}
+.form-control:focus{
+		color: var(--brown);
+		box-shadow: rgba(171, 78, 21, 0.12) 0px 2px 4px 0px, rgba(171, 78, 21, 0.32) 0px 2px 16px 0px;
+         border: 1px solid var(--brown);
+.-content label{
+	font-size: 40px;
+	color: var(--brown);
+}
+
+</style>
+<script>
+	$(document).ready(function(){
+		load_data();
+		function load_data(query)
+		{
+			$.ajax({
+			url:"searchresult.php",
+			method:"POST",
+			data:{query:query},
+			success:function(data)
+			{
+				$('#result').html(data);
+			}
+			});
+		}
+
+		$('#search').keyup(function(){
+		var search = $(this).val();
+		if(search != '')
+		{
+			load_data(search);
+		}
+		else
+		{
+			load_data();
+		}
+		});
+	});
+</script>
+<body>
+<div class="continer-fluid ">
+	<div class="sidebar">
+		<div class="user-side">
+			
+		</div>
+            <ul><a href="search.php">
+                <li id="search-btn" class="icon">
+                    <i class='bx bxs-search-alt-2' ></i>
+                    <label>Search</label>
+                </li>
+                </a>
+                <a href="createcrud.php">
+                <li id="search-btn" class="icon">
+                	<i class='bx bx-list-plus' ></i>
+                    <label>Create CRUD</label>
+                </li> 
+                </a>
+              </ul>
+        </div>
+	<div class="-inner-container">
+		<nav>
+			<div class="left-side">
+			   <i id="menu" class='bx bx-menu'></i>
+			   <span>Dashboard</span>
+			</div>
+			<div class="right-side">
+				<li>Home</li>
+				<li><a style="color:var(--blue)" href="index.php">LogOut</a></li>
+			</div>
+		</nav>
+		<div class="-content">
+			<div class="search-cont">
+				<div class="search-bar">
+					<input type="search" class="form-control" id="search" placeholder="Search here" name="search">
+				</div>
+			</div>
+			<div id="result" class="table-holder">
+				
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var show = false;
+	document.querySelector("#menu").onclick = function(){
+		if(show == false){
+			document.querySelector(".sidebar").style.width = "300px";
+			return show = true;
+		}else{
+            document.querySelector(".sidebar").style.width = "0";
+            return show = false;
+		}
+       
+	}
+</script>
+</body>
